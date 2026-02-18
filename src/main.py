@@ -1,20 +1,6 @@
 import time
 import copy
 
-# def color_checker(color, board, init_board, l):
-#     # Check if the color area already has queen in it or not
-#     for i in range(l):
-#         for j in range(l):
-#             if ((init_board[i][j] == color) and (board[i][j]!= color)):
-#                 return True
-#     return False
-
-# """ini color checkernya masih bisa diubah ke 
-# method1: bikin list isi color nya ada apa aja, kan kalau di board baru, pasti warnanya baru semua, 
-# jadi warna yang ditemuin pertama tama itu mostly warnanya masih kosong
-
-# """
-
 def column_checker(column, board, l): # column: idx column, l: board size
     # Check if the column area already has queen in it or not
     # Return true if area is not occupied
@@ -79,19 +65,6 @@ def surroundings_checker (row_idx, col_idx, board, l):
             return u_area(row_idx, col_idx, board) and bl_area(row_idx, col_idx, board) and b_area(row_idx, col_idx, board) and bd_area(row_idx, col_idx, board) and s_area(row_idx, col_idx, board)
         else:
             return bl_area(row_idx, col_idx, board) and u_area(row_idx, col_idx, board) and tl_area(row_idx, col_idx, board) and t_area(row_idx, col_idx, board) and tg_area(row_idx, col_idx, board) and s_area(row_idx, col_idx, board) and bd_area(row_idx, col_idx, board) and b_area(row_idx, col_idx, board) and bl_area(row_idx, col_idx, board)
-
-def check_palette(color_palette, color): # periksa apakah warnanya udah di-discover atau belum
-    throned = False
-    ada = False
-    if (len(color_palette) == 0):
-        color_palette.append([color, throned])
-    else:
-        for i in range (len(color_palette)):
-            if (color_palette[i] == color):
-                ada = True
-        if (ada == False):
-            color_palette.append([color, throned])
-    return throned
 
 def check_queen(color, colors_used, row_idx, column_idx, board, l):
     if (colors_used[color] == True):
